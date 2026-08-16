@@ -72,7 +72,7 @@ def save_chart(errors_by_date, output_file = "errors_chart.png"):
     """Create and save a bar chart of errors per day."""
     dates = sorted(errors_by_date.keys())
     counts = [errors_by_date[date] for date in dates]
-    plt.bar(dates, counts, color = "crimson")
+    plt.bar(dates, counts, color = "#F28B82")
     plt.xlabel("Date")
     plt.ylabel("Number of Errors")
     plt.title("Errors per Day")
@@ -90,7 +90,8 @@ def save_pie_chart(error_messages, output_file = "error_reason_pie.png"):
     sizes = list(message_counts.values())
     
     plt.figure()
-    wedges, texts, autotexts = plt.pie(sizes, autopct="%1.1f%%", startangle=90)
+    pastel_colors = ["#F28B82", "#FDCFE8", "#AECBFA", "#CCFF90", "#FFF475", "#D7AEFB"]
+    wedges, texts, autotexts = plt.pie(sizes, autopct="%1.1f%%", startangle=90, colors=pastel_colors[:len(labels)])
     plt.axis('equal') 
     plt.title("Error Reasons Distribution")
     plt.legend(wedges, labels, title="Error Reasons", loc="center left", bbox_to_anchor=(1, 0.5))
